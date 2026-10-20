@@ -1,0 +1,87 @@
+{
+  "name": "pi-usage-core",
+  "version": "0.1.0",
+  "description": "Extensible core platform, event bus, API, and TUI dashboard for AI provider usage & quota integration in Pi",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "pi": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "prepack": "bun run build && bun test",
+    "prepublishOnly": "bun run build && bun test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/restranger/pi-usage-core.git"
+  },
+  "homepage": "https://github.com/restranger/pi-usage-core#readme",
+  "bugs": {
+    "url": "https://github.com/restranger/pi-usage-core/issues"
+  },
+  "author": "ReStranger <restranger@disroot.org>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "pi",
+    "pi-extension",
+    "pi-package",
+    "pi-coding-agent",
+    "usage",
+    "quota",
+    "rate-limit",
+    "antigravity",
+    "codex",
+    "llm",
+    "tokens",
+    "dashboard",
+    "tui",
+    "statusline"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-ai": {
+      "optional": true
+    },
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    },
+    "@earendil-works/pi-tui": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "1.3.0",
+    "@earendil-works/pi-coding-agent": "1.3.0",
+    "@earendil-works/pi-tui": "1.3.0",
+    "@types/bun": "^1.4.3",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.3"
+  }
+}
